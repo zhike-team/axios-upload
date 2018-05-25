@@ -1,6 +1,6 @@
 {
   "name": "@zhike/axios-upload",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "基于axios上传表单数据",
   "main": "index.js",
   "scripts": {
