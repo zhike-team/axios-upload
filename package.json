@@ -4,7 +4,7 @@
   "description": "基于axios上传表单数据",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/zhike-team/axios-upload/issues"
   },
-  "homepage": "https://github.com/zhike-team/axios-upload#readme"
+  "homepage": "https://github.com/zhike-team/axios-upload#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "form-data": "^2.3.2"
+  },
+  "devDependencies": {
+    "@zhike/koa2-upload": "^1.0.0",
+    "koa": "^2.5.1",
+    "mocha": "^5.2.0"
+  }
 }
