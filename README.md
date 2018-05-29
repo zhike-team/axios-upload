@@ -9,7 +9,7 @@ node 中在 axios 基础上上传表单数据
 
 ### Installation
 ```
-npm i axios-upload 
+npm i @zhike/axios-upload 
 ```
 
 ### example
