@@ -2,27 +2,30 @@
 
 const axios = require('axios');
 const FormData = require('form-data');
-const fs = require('fs');
-const contentType = 'content-type';
 
 const isObject = (obj) => {
-  return typeof obj === "object" && obj !== null;
-}
+  return typeof obj === 'object' && obj !== null;
+};
 
-const API = axios.create();
+const instance = axios.create();
 
-API.interceptors.request.use((config) => {
+instance.interceptors.request.use((config) => {
 
-  const formData = config.data;
+  const data = config.data;
 
-  if (isObject(formData)) {
+  if (isObject(data)) {
 
     config.transformRequest = [(data, headers) => {
       let form = new FormData();
-      for(let key in formData) {
-        form.append(key, formData[key]);
+      for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+          form.append(key, data[key]);
+        }
       }
-      headers[contentType] = form.getHeaders()[contentType];
+      delete headers.post['Content-Type'];
+      delete headers.put['Content-Type'];
+      delete headers.patch['Content-Type'];
+      Object.assign(headers, form.getHeaders());
       return form;
     }];
 
@@ -32,4 +35,4 @@ API.interceptors.request.use((config) => {
 
 });
 
-module.exports = API;
+module.exports = instance;
