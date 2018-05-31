@@ -15,8 +15,7 @@ instance.interceptors.request.use((config) => {
 
   if (isObject(data)) {
 
-    // axios 没有固定这个值导致follow-redirects包使用默认值10M，无法上传较大的文件
-    config.maxContentLength = 1024 * 1024 * 100;
+    config.maxContentLength || (config.maxContentLength = 1024 * 1024 * 100);
 
     config.transformRequest = [(data, headers) => {
       let form = new FormData();
